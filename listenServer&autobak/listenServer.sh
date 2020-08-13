@@ -29,8 +29,8 @@ LoginCount=`ps -fe|grep Login |grep -v grep|wc -l`
 WorldCount=`ps -fe|grep World |grep -v grep|wc -l`
 
 # 查询Server是否正常
-ServerCount=`ps -fe|grep ServerTest |grep -v grep|wc -l`
-
+ServerTestCount=`ps -fe|grep ServerTest |grep -v grep|wc -l`
+ServerCount=`ps -fe|grep Server |grep -v grep|wc -l`
 # 查询Login和World是否存在，如果存在说明天龙服务正在
 # 运行,并往下继续执行.否则的话直接退出脚本等待下次监听
 if [ "$LoginCount" = 0 ] || [ "$WorldCount" = 0 ];then
@@ -39,7 +39,7 @@ if [ "$LoginCount" = 0 ] || [ "$WorldCount" = 0 ];then
 fi
 
 # 如果 Server 不存在，就重启Server
-if [ $ServerCount = 0 ];then
+if [ $ServerCount = 0 ] || [ $ServerTestCount = 0 ];then
     #写入日志
     echo "restart TLBB Server....." >> /home/tlbb/listenServer.log
     cd /home/tlbb && ./stop.sh && ./run.sh
