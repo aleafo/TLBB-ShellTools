@@ -23,7 +23,7 @@ AddCrontab
 
 # 记录日志时间
 echo `date +"%Y-%m-%d %H:%M:%S"`  >> /home/tlbb/listenServer.log
-echo "[CHECK]:Detecting server status..."
+echo "[CHECK]:Check server running status..."
 # 查询Login与World是否正常
 LoginCount=`ps -fe|grep Login |grep -v grep|wc -l`
 WorldCount=`ps -fe|grep World |grep -v grep|wc -l`
@@ -31,10 +31,10 @@ WorldCount=`ps -fe|grep World |grep -v grep|wc -l`
 # 查询Server是否正常
 ServerTestCount=`ps -fe|grep ServerTest |grep -v grep|wc -l`
 ServerCount=`ps -fe|grep Server |grep -v grep|wc -l`
-# 查询Login和World是否存在，如果存在说明天龙服务正在
-# 运行,并往下继续执行.否则的话直接退出脚本等待下次监听
+# 查询Login和World是否存在，如果存在说明天龙服务正在运行,并往下继续执行.否则的话直接退出脚本等待下次监听
 if [ "$LoginCount" = 0 ] || [ "$WorldCount" = 0 ];then
     echo "[STATUS]:TLBB Service is not running..." >> /home/tlbb/listenServer.log
+    echo "-----------------------------------------" >> /home/tlbb/listenServer.log
     exit;
 fi
 
