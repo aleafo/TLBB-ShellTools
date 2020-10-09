@@ -5,7 +5,7 @@ export PATH
 LANG=en_US.UTF-8
 echo "
 +----------------------------------------------------------------------
-| TLBB Service for CentOS 7.x install shell
+| TLBB Service for CentOS 8.x install shell
 +----------------------------------------------------------------------
 | Copyright © 2020-2099 Wigiesen All rights reserved.
 +----------------------------------------------------------------------
@@ -43,7 +43,7 @@ if [ "$go" == 'n' ];then
 fi
 
 Select_Install_Version(){
-    version_arr=(7.2 7.3 7.6 7.7 7.8)
+    version_arr=(8.0)
     echo "---------Please select version ------"
     for i in ${version_arr[@]}
     do
@@ -52,9 +52,9 @@ Select_Install_Version(){
     echo "-------------------------------------"
     read -p "Select CentOS version: " version;
 
-    while [[ $version < 7.2 ]] || [[ $version > 7.8 ]]
+    while [[ $version < 8.0 ]] || [[ $version > 8.2 ]]
     do
-        read -p "Please enter the correct CentOS 7.x version: " version;
+        read -p "Please enter the correct CentOS 8.x version: " version;
     done
 }
 
@@ -101,8 +101,7 @@ installTlbbService(){
     mysql -uroot -p${dbpass} web < web.sql
 
     # 安装依赖组件
-    yum -y install glibc.i686 libstdc++
-
+    yum -y install glibc.i686 libstdc++ libstdc++.so.6
 
     # 安装ODBC与ODBC相关依赖组件
     tar zxvf lib.tar.gz
@@ -132,7 +131,7 @@ claerSetupLib(){
     rm -rvf *
     echo "
     +----------------------------------------------------------------------
-    | TLBB Service for CentOS 7.x installed successfully !!!
+    | TLBB Service for CentOS 8.x installed successfully !!!
     +----------------------------------------------------------------------
     | Please save your MySQL database password: ${dbpass}
     +----------------------------------------------------------------------
