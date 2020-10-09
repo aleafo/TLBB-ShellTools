@@ -43,7 +43,7 @@ if [ "$go" == 'n' ];then
 fi
 
 Select_Install_Version(){
-    version_arr=(7.2 7.3 7.6 7.7)
+    version_arr=(7.2 7.3 7.6 7.7 7.8)
     echo "------选择你要安装的系统版本(输入版本号,如:7.3)------"
     for i in ${version_arr[@]}
     do
@@ -52,7 +52,7 @@ Select_Install_Version(){
     echo "-------------------------------------"
     read -p "输入版本号 CentOS 版本号: " version;
 
-    while [[ $version < 7.2 ]] || [[ $version > 7.7 ]]
+    while [[ $version < 7.2 ]] || [[ $version > 7.8 ]]
     do
         read -p "版本号不正确,请重新输入: " version;
     done

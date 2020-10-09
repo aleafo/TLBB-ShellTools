@@ -43,7 +43,7 @@ if [ "$go" == 'n' ];then
 fi
 
 Select_Install_Version(){
-    version_arr=(7.2 7.3 7.6 7.7)
+    version_arr=(7.2 7.3 7.6 7.7 7.8)
     echo "---------Please select version ------"
     for i in ${version_arr[@]}
     do
@@ -52,7 +52,7 @@ Select_Install_Version(){
     echo "-------------------------------------"
     read -p "Select CentOS version: " version;
 
-    while [[ $version < 7.2 ]] || [[ $version > 7.7 ]]
+    while [[ $version < 7.2 ]] || [[ $version > 7.8 ]]
     do
         read -p "Please enter the correct CentOS 7.x version: " version;
     done
