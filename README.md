@@ -23,6 +23,29 @@
 
 `sh TLServer-CentOS7x-CHS.sh`
 
+## TLServer-CentOS8x.sh
+一键安装TLServer CentOS8.x环境脚本-英文版
+
+使用说明：把 `TLServer-CentOS8x.sh` 文件拖入 Linux `/opt` 下
+
+执行命令：
+
+`cd /opt && chmod +x TLServer-CentOS8x.sh`
+
+`sh TLServer-CentOS8x.sh`
+
+
+## TLServer-CentOS8x-CHS.sh
+一键安装TLServer CentOS8.x环境脚本-中文版
+
+使用说明：把 `TLServer-CentOS8x-CHS.sh` 文件拖入 Linux `/opt` 下
+
+执行命令：
+
+`cd /opt && chmod +x TLServer-CentOS8x-CHS.sh`
+
+`sh TLServer-CentOS8x-CHS.sh`
+
 ## TlbbDB-DF.sh
 一键删档脚本
 
