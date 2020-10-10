@@ -22,8 +22,8 @@ checkMySQLStatus(){
 checkMySQLStatus
 
 downloadTlbbDbSql(){
-    wget -P /opt http://tlbbres.xinyu19.com/tlbbdb.sql
-    wget -P /opt http://tlbbres.xinyu19.com/web.sql
+    # wget -P /opt http://abc.com/tlbbdb.sql
+    # wget -P /opt http://abc.com/web.sql
 }
 
 cleanDatabase(){
