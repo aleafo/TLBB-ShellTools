@@ -46,6 +46,9 @@
 
 `sh TLServer-CentOS8x-CHS.sh`
 
+## TLServer-CentOS6.5(CHS).sh
+文件夹内有说明
+
 ## TlbbDB-DF.sh
 一键删档脚本
 
