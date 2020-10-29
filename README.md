@@ -20,7 +20,7 @@
 `TLServer-CentOS6.5.sh`    英文安装
 
 ## 一键安装说明
-1.把 指定(.sh) 脚本文件 和 tlbbfor6.5.tar.gz 压缩包拖入Linux服务器 /opt 目录下
+1.把 指定(.sh) 脚本文件 和 (.tag.gz) 压缩包拖入Linux服务器 /opt 目录下
 
 2.执行命令：cd /opt && chmod +x 脚本文件名 && sh 脚本文件名
 
