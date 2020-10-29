@@ -2,21 +2,28 @@
 
 ## CentOS7.x系列版本64位安装脚本
 (目前支持的版本：7.2 7.3 7.6 7.7 7.8)
+
 `TLServer-CentOS7x-CHS.sh`    中文安装
+
 `TLServer-CentOS7x.sh`    英文安装
 
 ## CentOS8.x系列版本64位安装脚本
 (目前支持的版本：8.0)
+
 `TLServer-CentOS8x-CHS.sh`    中文安装
+
 `TLServer-CentOS8x.sh`    英文安装
 
 ## CentOS6.5版本64位安装脚本
 `TLServer-CentOS6.5-CHS.sh`    中文安装
+
 `TLServer-CentOS6.5.sh`    英文安装
 
 ## 一键安装说明
 1.把 指定(.sh) 脚本文件 和 tlbbfor6.5.tar.gz 压缩包拖入Linux服务器 /opt 目录下
+
 2.执行命令：cd /opt && chmod +x 脚本文件名 && sh 脚本文件名
+
 3.根据提示选择系统版本号，设置数据库密码，自动执行等待完成
 
 -------------------------------------------------
