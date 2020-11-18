@@ -18,7 +18,7 @@ echo -e "\033[44;30m|               \033[0m\033[41m作者: 心语难诉 QQ:43772
 echo -e "\033[44;30m+---------------------------------------------------------+\033[0m"
 echo -e "\033[44;30m| (1).安装TLBB服务器环境到 CentOS 6.5                     |\033[0m"
 echo -e "\033[44;30m| (2).安装TLBB服务器环境到 CentOS 7.x                     |\033[0m"
-echo -e "\033[44;30m| (3).安装TLBB服务器环境到 CentOS 8.0                     |\033[0m"
+echo -e "\033[44;30m| (3).安装TLBB服务器环境到 CentOS 8.x                     |\033[0m"
 echo -e "\033[44;30m| (4).执行删档                                            |\033[0m"
 echo -e "\033[44;30m| (5).退出                                                |\033[0m"
 echo -e "\033[44;30m+---------------------------------------------------------+\033[0m"
@@ -60,7 +60,7 @@ Install_65(){
     mysql -uroot -p${dbpass} web < web.sql
 
     # 安装依赖组件
-    sudo yum -y install glibc.i686 libstdc++-4.4.7-4.el6.i686
+    sudo yum -y install glibc.i686 libstdc++ libstdc++.so.6
 
     # 安装ODBC与ODBC相关依赖组件
     rpm -ivh 6.5_unixODBC.rpm --nodeps --force
@@ -110,8 +110,8 @@ Install_7x(){
     # 数据库安装
     yum -y remove mysql-libs
     tar zxvf MySQL.tar.gz
-    rpm -ivh mysql-client.rpm
-    rpm -ivh mysql-server.rpm
+    rpm -ivh mysql-client.rpm --nodeps --force
+    rpm -ivh mysql-server.rpm --nodeps --force
 
     # 数据库权限相关操作
     mysql -e "grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;";
@@ -124,19 +124,19 @@ Install_7x(){
     mysql -uroot -p${dbpass} web < web.sql
 
     # 安装依赖组件
-    yum -y install glibc.i686 libstdc++-4.4.7-4.el6.i686 libstdc++.so.6
+    sudo yum -y install glibc.i686 libstdc++ libstdc++.so.6
 
     # 安装ODBC与ODBC相关依赖组件
     tar zxvf lib.tar.gz
-    rpm -ivh unixODBC-libs.rpm
-    rpm -ivh unixODBC-2.2.11.rpm
-    rpm -ivh libtool-ltdl.rpm
+    rpm -ivh unixODBC-libs.rpm --nodeps --force
+    rpm -ivh unixODBC-2.2.11.rpm --nodeps --force
+    rpm -ivh libtool-ltdl.rpm --nodeps --force
     rpm -ivh unixODBC-devel.rpm --nodeps --force
 
     # 安装MYSQL ODBC驱动
     tar zxvf ODBC.tar.gz
     ln -s /usr/lib64/libz.so.1 /usr/lib/lib
-    rpm -ivh mysql-odbc.rpm --nodeps
+    rpm -ivh mysql-odbc.rpm --nodeps --force
 
     # ODBC配置
     tar zvxf Config.tar.gz -C /etc
@@ -174,8 +174,8 @@ Install_8x(){
     dnf install -y ncurses-compat-libs
     dnf install -y libnsl
 
-    rpm -ivh mysql-client.rpm
-    rpm -ivh mysql-server.rpm
+    rpm -ivh mysql-client.rpm --nodeps --force
+    rpm -ivh mysql-server.rpm --nodeps --force
 
     # 数据库权限相关操作
     mysql -e "grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;";
@@ -188,15 +188,15 @@ Install_8x(){
     mysql -uroot -p${dbpass} web < web.sql
 
     # 安装依赖组件
-    yum -y install glibc.i686 libstdc++ libstdc++.so.6
+    sudo yum -y install glibc.i686 libstdc++ libstdc++.so.6
 
     # 安装ODBC与ODBC相关依赖组件
     tar zxvf lib.tar.gz
     yum -y install libcrypt.so.1
     yum -y install libnsl.so.1
-    rpm -ivh unixODBC-libs.rpm
-    rpm -ivh unixODBC-2.2.11.rpm
-    rpm -ivh libtool-ltdl.rpm
+    rpm -ivh unixODBC-libs.rpm --nodeps --force
+    rpm -ivh unixODBC-2.2.11.rpm --nodeps --force
+    rpm -ivh libtool-ltdl.rpm --nodeps --force
     rpm -ivh unixODBC-devel.rpm --nodeps --force
 
     # 安装MYSQL ODBC驱动
@@ -301,9 +301,9 @@ elif [ "$go" = "2" ]; then
     InstallSuccessfully
     cleanAll
 elif [ "$go" = "3" ]; then
-    # supports 8.0
-    if [ "$SYS_VERSION" != "8.0" ]; then
-        echo -e "\033[41m抱歉, 您当前的系统并不是 CentOS 8.0 64位\033[0m"
+    # supports 8.0 8.2
+    if [[ $SYS_VERSION < 8.0 ]] || [[ $SYS_VERSION > 8.2 ]]; then
+        echo -e "\033[41m抱歉, CentOS8.x版本目前只支持以下版本: 8.0 8.1 8.2\033[0m"
         exit;
     fi
     # 进入安装流程
